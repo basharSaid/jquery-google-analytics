@@ -84,7 +84,7 @@
       if (typeof _gat !== undefined) {
         debug('Google Analytics loaded');
 
-        pageTracker = _gat._getTracker(account_id);
+        pageTracker = _gat._createTracker(account_id);
 
         if(settings.status_code === null || settings.status_code === 200) {
           pageTracker._trackPageview();
@@ -153,7 +153,7 @@
    *
    */
   $.trackSocial = function(network, socialAction, opt_target, opt_pagePath) {
-    if(typeof pageTracker == 'undefined') {
+    if(typeof pageTracker === 'undefined') {
       debug('FATAL: pageTracker is not defined'); // blocked by whatever
     } else {
       pageTracker._trackSocial(network, socialAction, opt_target, opt_pagePath);
